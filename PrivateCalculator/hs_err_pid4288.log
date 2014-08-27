@@ -1,0 +1,98 @@
+#
+# An unexpected error has been detected by Java Runtime Environment:
+#
+#  Internal Error (434C41535326494C453041525345520E4350500AB6), pid=4288, tid=3292
+#
+# Java VM: Java HotSpot(TM) Client VM (1.6.0-b105 mixed mode)
+# If you would like to submit a bug report, please visit:
+#   http://java.sun.com/webapps/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x003f7800):  JavaThread "Unknown thread" [_thread_in_vm, id=3292]
+
+Stack: [0x00360000,0x003b0000)
+[error occurred during error reporting, step 110, id 0xc00000fd]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [javaw.exe+0xc07c]
+C  [javaw.exe+0x7d35]
+C  [kernel32.dll+0x133ca]
+C  [ntdll.dll+0x39ed2]
+C  [ntdll.dll+0x39ea5]
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+VM state:not at safepoint (not fully initilizated)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 960K, used 0K [0x045b0000, 0x046b0000, 0x04a90000)
+  eden space 896K,   0% used [0x045b0000, 0x045b0000, 0x04690000)
+  from space 64K,   0% used [0x04690000, 0x04690000, 0x046a0000)
+  to   space 64K,   0% used [0x046a0000, 0x046a0000, 0x046b0000)
+ tenured generation   total 4096K, used 0K [0x04a90000, 0x04e90000, 0x085b0000)
+   the space 4096K,   0% used [0x04a90000, 0x04a90000, 0x04a90200, 0x04e90000)
+ compacting perm gen  total 12288K, used 103K [0x085b0000, 0x091b0000, 0x0c5b0000)
+   the space 12288K,   0% used [0x085b0000, 0x085c9e40, 0x085ca000, 0x091b0000)
+No shared spaces configured.
+
+Dynamic libraries:
+0x00400000 - 0x00423000 	C:\Program Files (x86)\Java\jre1.6.0\bin\javaw.exe
+0x77230000 - 0x773b0000 	C:\Windows\SysWOW64\ntdll.dll
+0x75df0000 - 0x75f00000 	C:\Windows\syswow64\kernel32.dll
+0x76cb0000 - 0x76cf6000 	C:\Windows\syswow64\KERNELBASE.dll
+0x74f20000 - 0x74fc0000 	C:\Windows\syswow64\ADVAPI32.dll
+0x75c50000 - 0x75cfc000 	C:\Windows\syswow64\msvcrt.dll
+0x74f00000 - 0x74f19000 	C:\Windows\SysWOW64\sechost.dll
+0x75a10000 - 0x75b00000 	C:\Windows\syswow64\RPCRT4.dll
+0x74d90000 - 0x74df0000 	C:\Windows\syswow64\SspiCli.dll
+0x74d80000 - 0x74d8c000 	C:\Windows\syswow64\CRYPTBASE.dll
+0x75b50000 - 0x75c50000 	C:\Windows\syswow64\USER32.dll
+0x75790000 - 0x75820000 	C:\Windows\syswow64\GDI32.dll
+0x759f0000 - 0x759fa000 	C:\Windows\syswow64\LPK.dll
+0x76d90000 - 0x76e2d000 	C:\Windows\syswow64\USP10.dll
+0x75730000 - 0x75790000 	C:\Windows\system32\IMM32.DLL
+0x75420000 - 0x754ec000 	C:\Windows\syswow64\MSCTF.dll
+0x72240000 - 0x72278000 	C:\Windows\SysWOW64\nvinit.dll
+0x7c340000 - 0x7c396000 	C:\Program Files (x86)\Java\jre1.6.0\bin\msvcr71.dll
+0x6d7c0000 - 0x6da07000 	C:\Program Files (x86)\Java\jre1.6.0\bin\client\jvm.dll
+0x745d0000 - 0x74602000 	C:\Windows\system32\WINMM.dll
+0x713d0000 - 0x7141c000 	C:\Windows\system32\apphelp.dll
+0x6d310000 - 0x6d318000 	C:\Program Files (x86)\Java\jre1.6.0\bin\hpi.dll
+0x75a00000 - 0x75a05000 	C:\Windows\syswow64\PSAPI.DLL
+0x6d770000 - 0x6d77c000 	C:\Program Files (x86)\Java\jre1.6.0\bin\verify.dll
+0x6d3b0000 - 0x6d3cf000 	C:\Program Files (x86)\Java\jre1.6.0\bin\java.dll
+0x6d7b0000 - 0x6d7bf000 	C:\Program Files (x86)\Java\jre1.6.0\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=GBK -Xbootclasspath:J:\adt-bundle-windows-x86-20130917\sdk\platforms\android-19\android.jar
+java_command: org.eclipse.jdt.internal.junit.runner.RemoteTestRunner -version 3 -port 50819 -testLoaderClass org.eclipse.jdt.internal.junit4.runner.JUnit4TestLoader -loaderpluginname org.eclipse.jdt.junit4.runtime -test com.chuhan.privacycalc.test.TestCryptInfo:cryptInfo
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+CLASSPATH=.;C:\Program Files (x86)\Java\jdk1.6.0\lib
+PATH=C:/Program Files (x86)/Java/jre1.6.0/bin/client;C:/Program Files (x86)/Java/jre1.6.0/bin;C:/Program Files (x86)/Java/jre1.6.0/lib/i386;C:\RailsInstaller\Git\cmd;C:\RailsInstaller\Ruby1.9.3\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Java\jdk1.6.0\bin;J:\androidtools\android-sdk-windows\tools;C:\Program Files\TortoiseGit\bin;J:\adt-bundle-windows-x86-20130917\eclipse;
+USERNAME=lifen
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 42 Stepping 7, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows NT 6.1 Build 7601 Service Pack 1
+
+CPU:total 4 family 6, cmov, cx8, fxsr, mmx, sse, sse2
+
+Memory: 4k page, physical 3975400k(1554876k free), swap 4194303k(4194303k free)
+
+vm_info: Java HotSpot(TM) Client VM (1.6.0-b105) for windows-x86, built on Nov 29 2006 00:48:48 by "java_re" with unknown MS VC++:1310
+
