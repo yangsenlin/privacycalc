@@ -1,25 +1,34 @@
 package com.chuhan.privatecalc;
 
+import java.io.UTFDataFormatException;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 import com.chuhan.privatecalc.calculator.CaInputView;
 import com.chuhan.privatecalc.calculator.CaInputView.InputHappend;
 import com.chuhan.privatecalc.calculator.CaOutputView;
 import com.chuhan.privatecalc.calculator.CalModel;
 import com.chuhan.privatecalc.calculator.ICalculator;
+import com.chuhan.privatecalc.model.watcher.DemoCryptWatcher;
+import com.chuhan.privatecalc.model.watcher.WatcherCenter;
 
 /**
- * Ë½ÃÜ¼ÆËãÆ÷µÄÈë¿Ú
+ * Ë½ï¿½Ü¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @author lifen
  *
  */
 public class PrivateCalculatorActivity extends Activity implements InputHappend{
-
+	
+	public final static String TAG = PrivateCalculatorActivity.class.getSimpleName();
 	private CaOutputView cov;
 	private ICalculator calModel;
-	//Í¨¹ýÒ»¸ö×Ö·û´®ÔÚÁ¬ÐøÊäÈëÊý×ÖÊ±½«Êý×ÖÁ¬ÔÚÒ»Æð eg."8"+"8"="88"
+	//Í¨ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ eg."8"+"8"="88"
 	private String number = "0";
 	
 	@Override
@@ -31,13 +40,21 @@ public class PrivateCalculatorActivity extends Activity implements InputHappend{
 		cov = new CaOutputView(this);
 		calModel = new CalModel();
 		
+		Button btn = (Button) findViewById(R.id.Operand0);
+		btn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				WatcherCenter.triggerDemoCryptProgress("yahuang", 123456, 17, 100);
+				WatcherCenter.triggerDemoCryptSuccess("yahuang", "Oh! Success");
+			}
+		});
 	}
 
 	@Override
 	public void operandIn(String operand) {
-		//¶ÔÊ×Î»Îª¡°0¡±×÷´¦Àí
+		//ï¿½ï¿½ï¿½ï¿½Î»Îªï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		number = number.equals("0")?operand:number+operand;
-		//µ±»Øµ÷º¯ÊýÖ´ÐÐÊ±£¬ÔÚCaOutputViewÖÐÏÔÊ¾,ÊäÈëÔËËãÊýÊ±Ö»ÐèÒªÏÔÊ¾
+		//ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½CaOutputViewï¿½ï¿½ï¿½ï¿½Ê¾,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ö»ï¿½ï¿½Òªï¿½ï¿½Ê¾
 		cov.OutputData(number);
 	}
 
@@ -49,10 +66,10 @@ public class PrivateCalculatorActivity extends Activity implements InputHappend{
 			cov.OutputData(number);
 			return;
 		}
-		//ÊäÈë²Ù×÷·ûÊ±ÏÈ½«¡°ÀÛ¼Æ¡±µÄnumberÑ¹ÈëÕ»ÔÙ½«×Ô¼ºÑ¹Èë
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½È½ï¿½ï¿½ï¿½ï¿½Û¼Æ¡ï¿½ï¿½ï¿½numberÑ¹ï¿½ï¿½Õ»ï¿½Ù½ï¿½ï¿½Ô¼ï¿½Ñ¹ï¿½ï¿½
 		calModel.pushOperand(number);
 		double result = calModel.pushOperate(operate);
-		//Èç¹ûÊÇÕûÊýÔòÏû³ýÐ¡Êýµã 8.0 -> 8
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ 8.0 -> 8
 		if(result % 1d == 0d){
 			int tmp = Double.valueOf(result).intValue();
 			cov.OutputData(String.valueOf(tmp));
@@ -69,5 +86,38 @@ public class PrivateCalculatorActivity extends Activity implements InputHappend{
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	private DemoCryptWatcher mDemoCryptWatcher = new DemoCryptWatcher() {
+		
+		@Override
+		public void onSuccess(String uin, Object result) {
+			Log.d(TAG, "On success called, result: " + (String) result);
+		}
+		
+		@Override
+		public void onProgress(String uin, long fid, long current, long total) {
+			Log.d(TAG, "On progress called, uin: " + uin + " fid: " + fid + " current: " + current + " total: " + total);
+		}
+		
+		@Override
+		public void onError(String uin, long fid, Object error) {}
+		
+		@Override
+		public void onComplete() {}
+	};
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		WatcherCenter.bindDemoCryptListener(mDemoCryptWatcher, false);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		WatcherCenter.bindDemoCryptListener(mDemoCryptWatcher, true);
+	}
+	
+	
 
 }
